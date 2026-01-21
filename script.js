@@ -46,5 +46,16 @@ function renderTasks() {
 document.addEventListener('DOMContentLoaded', function() {
     renderTasks();
     
-    // TODO
+    document.getElementById('addTaskBtn').addEventListener('click', () => {
+    tasks.push({
+        id: tasks.length + 1,
+        title: document.getElementById('taskTitle').value || "Untitled Task",
+        description: "",
+        dueDate: document.getElementById('taskDueDate').value,
+        assignedTo: document.getElementById('taskAssignedTo').value,
+        completed: false
+    });
+
+    renderTasks();
+    });
 });
