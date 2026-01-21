@@ -88,3 +88,7 @@ body {
 .task-completed .task-title {
     text-decoration: line-through;
 }
+
+.task-overdue {
+    border-left: 4px solid red;
+}

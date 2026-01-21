@@ -20,7 +20,12 @@ function renderTasks() {
 
     tasks.forEach(task => {
         const taskItem = document.createElement('div');
-        taskItem.className = 'card task-item';
+
+        const today = new Date().toISOString().split('T')[0]; 
+        let classes = 'card task-item';
+        if (task.completed) classes += ' task-completed';
+        if (task.dueDate < today) classes += ' task-overdue';
+        taskItem.className = classes;
         
         taskItem.innerHTML = `
             <div class="card-body">
@@ -32,7 +37,10 @@ function renderTasks() {
                         ${task.assignedTo ? `<div class="task-date">Assigned to: ${task.assignedTo}</div>` : ''}
                     </div>
                     <div class="task-actions">
-                        <!-- TODO -->
+                        <button class="btn btn-sm btn-outline-success"
+                            onclick="toggleComplete(${task.id})">
+                            complete
+                        </button>
                     </div>
                 </div>
             </div>
