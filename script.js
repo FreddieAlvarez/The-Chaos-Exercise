@@ -42,6 +42,15 @@ function renderTasks() {
     });
 }
 
+//toggle complete function
+function toggleComplete(taskId) {
+    const task = tasks.find(t => t.id === taskId);
+    if (task) {
+        task.completed = !task.completed;
+        renderTasks();
+    }
+}
+
 // Initialize the app when page loads
 document.addEventListener('DOMContentLoaded', function() {
     renderTasks();
